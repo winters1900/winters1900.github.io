@@ -1,1 +1,1 @@
-It's a personal bolg.
+It's a personal blog.
