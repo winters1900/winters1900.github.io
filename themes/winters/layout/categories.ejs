@@ -1,0 +1,26 @@
+<section class="listing-page shell">
+  <header class="listing-header">
+    <p class="eyebrow">内容地图</p>
+    <h1>分类</h1>
+    <p>先建立两个方向，文章会随着学习逐步增加。</p>
+  </header>
+
+  <div class="category-directory">
+    <% (theme.categories || []).forEach(function(item) { %>
+      <% const category = site.categories.findOne({ name: item.name }); %>
+      <% const count = category ? category.length : 0; %>
+      <section class="category-directory-item" id="<%= item.slug %>">
+        <div>
+          <span class="category-count"><%= count %> 篇文章</span>
+          <h2><%= item.name %></h2>
+          <p><%= item.description %></p>
+        </div>
+        <% if (category) { %>
+          <a class="primary-link secondary" href="<%- url_for(category.path) %>">进入分类</a>
+        <% } else { %>
+          <p class="empty-note">分类已创建。发布第一篇文章后，这里会自动显示内容。</p>
+        <% } %>
+      </section>
+    <% }); %>
+  </div>
+</section>

@@ -1,0 +1,78 @@
+title: Winters' Blog
+subtitle: Agent 与 DevOps 学习记录
+description: 记录 Agent、DevOps 与软件工程实践中的理解、实验和复盘。
+keywords:
+  - Agent
+  - DevOps
+  - 软件工程
+author: Winters
+language: zh-CN
+timezone: Asia/Shanghai
+
+url: https://winters1900.github.io
+permalink: posts/:title/
+permalink_defaults: null
+pretty_urls:
+  trailing_index: false
+  trailing_html: false
+
+source_dir: source
+public_dir: public
+tag_dir: tags
+archive_dir: archives
+category_dir: categories
+code_dir: downloads/code
+i18n_dir: :lang
+skip_render: null
+
+new_post_name: :title.md
+default_layout: post
+titlecase: false
+external_link:
+  enable: true
+  field: site
+  exclude: null
+filename_case: 0
+render_drafts: false
+post_asset_folder: false
+relative_link: false
+future: true
+syntax_highlighter: highlight.js
+highlight:
+  line_number: false
+  auto_detect: false
+  tab_replace: "  "
+  wrap: true
+  hljs: true
+
+index_generator:
+  path: ""
+  per_page: 10
+  order_by: -date
+
+default_category: uncategorized
+category_map:
+  "Agent 学习笔记": agent-notes
+  "DevOps": devops
+tag_map: null
+
+date_format: YYYY-MM-DD
+time_format: HH:mm
+updated_option: mtime
+
+per_page: 10
+pagination_dir: page
+
+theme: winters
+
+feed:
+  type: atom
+  path: atom.xml
+  limit: 20
+  content: true
+
+marked:
+  dompurify: true
+  lazyload: true
+  prependRoot: true
+  postAsset: false

@@ -1,0 +1,18 @@
+<div class="post-list">
+  <% posts.each(function(post) { %>
+    <article class="post-row">
+      <div class="post-row-meta">
+        <time datetime="<%= date_xml(post.date) %>"><%= date(post.date, 'YYYY-MM-DD') %></time>
+        <% if (post.categories && post.categories.length) { %>
+          <span><%= post.categories.first().name %></span>
+        <% } %>
+      </div>
+      <div class="post-row-main">
+        <h2><a href="<%- url_for(post.path) %>"><%= post.title %></a></h2>
+        <% const summary = post.description || post.excerpt || post.content; %>
+        <p><%= truncate(strip_html(summary), { length: 108 }) %></p>
+      </div>
+      <a class="text-link" href="<%- url_for(post.path) %>" aria-label="阅读《<%= post.title %>》">阅读全文</a>
+    </article>
+  <% }); %>
+</div>

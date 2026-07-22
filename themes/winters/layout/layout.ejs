@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="<%= config.language || 'zh-CN' %>">
+  <head>
+    <% const contentTitle = page.title || page.category || page.tag; %>
+    <% const pageTitle = contentTitle ? `${contentTitle} | ${config.title}` : config.title; %>
+    <% const categoryConfig = page.category && (theme.categories || []).find(function(item) { return item.name === page.category; }); %>
+    <% const rawDescription = page.description || (categoryConfig && categoryConfig.description) || page.excerpt || config.description; %>
+    <% const pageDescription = truncate(strip_html(rawDescription || ''), { length: 150 }); %>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="<%= pageDescription %>">
+    <meta name="author" content="<%= config.author %>">
+    <meta name="theme-color" content="#f6f7f4" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#15181d" media="(prefers-color-scheme: dark)">
+    <meta property="og:type" content="<%= page.layout === 'post' ? 'article' : 'website' %>">
+    <meta property="og:title" content="<%= pageTitle %>">
+    <meta property="og:description" content="<%= pageDescription %>">
+    <meta property="og:url" content="<%= full_url_for(page.path || '') %>">
+    <meta property="og:site_name" content="<%= config.title %>">
+    <meta property="og:locale" content="zh_CN">
+    <meta property="og:image" content="<%= full_url_for(theme.hero.image) %>">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="canonical" href="<%= full_url_for(page.path || '') %>">
+    <link rel="icon" type="image/png" sizes="64x64" href="<%- url_for('/images/favicon.png') %>">
+    <link rel="alternate" type="application/atom+xml" title="<%= config.title %>" href="<%= full_url_for('/atom.xml') %>">
+    <link rel="stylesheet" href="<%- url_for('/css/style.css') %>">
+    <script src="<%- url_for('/js/theme.js') %>" defer></script>
+    <title><%= pageTitle %></title>
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">跳到正文</a>
+    <%- partial('_partial/header') %>
+    <main id="main-content">
+      <%- body %>
+    </main>
+    <%- partial('_partial/footer') %>
+  </body>
+</html>

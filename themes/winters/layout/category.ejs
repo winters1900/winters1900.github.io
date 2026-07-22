@@ -1,0 +1,14 @@
+<section class="listing-page shell">
+  <header class="listing-header">
+    <p class="eyebrow">分类</p>
+    <h1><%= page.category %></h1>
+    <% const current = (theme.categories || []).find(function(item) { return item.name === page.category; }); %>
+    <% if (current) { %><p><%= current.description %></p><% } %>
+  </header>
+  <%- partial('_partial/post-list', { posts: page.posts }) %>
+  <% if (page.total > 1) { %>
+    <nav class="pagination" aria-label="分类分页">
+      <%- paginator({ prev_text: '上一页', next_text: '下一页' }) %>
+    </nav>
+  <% } %>
+</section>

@@ -1,0 +1,13 @@
+<section class="listing-page shell">
+  <header class="listing-header">
+    <p class="eyebrow">全部记录</p>
+    <h1>归档</h1>
+    <p>按时间回看学习路径和实践记录。</p>
+  </header>
+  <%- partial('_partial/post-list', { posts: page.posts }) %>
+  <% if (page.total > 1) { %>
+    <nav class="pagination" aria-label="归档分页">
+      <%- paginator({ prev_text: '上一页', next_text: '下一页' }) %>
+    </nav>
+  <% } %>
+</section>

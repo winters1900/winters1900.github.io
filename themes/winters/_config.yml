@@ -1,0 +1,15 @@
+categories:
+  - name: Agent 学习笔记
+    slug: agent-notes
+    description: 记录对 Agent 架构、工具调用、上下文、记忆与评估的理解和实验。
+  - name: DevOps
+    slug: devops
+    description: 记录持续交付、云原生、可观测性与工程效率实践。
+
+hero:
+  eyebrow: 个人技术笔记
+  title: 学懂 Agent，写下过程。
+  description: 记录理解、实验和复盘，让每次学习都有迹可循。
+  image: /images/agent-workflow-hero.webp
+
+github_url: https://github.com/winters1900
