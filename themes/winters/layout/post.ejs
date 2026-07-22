@@ -1,0 +1,31 @@
+<article class="article shell article-shell">
+  <header class="article-header">
+    <div class="article-meta">
+      <time datetime="<%= date_xml(page.date) %>"><%= date(page.date, 'YYYY-MM-DD') %></time>
+      <% if (page.categories && page.categories.length) { %>
+        <% page.categories.each(function(category) { %>
+          <a href="<%- url_for(category.path) %>"><%= category.name %></a>
+        <% }); %>
+      <% } %>
+    </div>
+    <h1><%= page.title %></h1>
+    <% if (page.description) { %>
+      <p class="article-description"><%= page.description %></p>
+    <% } %>
+  </header>
+
+  <div class="article-content">
+    <%- page.content %>
+  </div>
+
+  <% if (page.tags && page.tags.length) { %>
+    <footer class="article-footer">
+      <span>相关主题</span>
+      <div class="tag-list">
+        <% page.tags.each(function(tag) { %>
+          <a href="<%- url_for(tag.path) %>"><%= tag.name %></a>
+        <% }); %>
+      </div>
+    </footer>
+  <% } %>
+</article>
