@@ -1,10 +1,11 @@
-<footer class="site-footer">
-  <div class="shell footer-inner">
-    <p>把概念讲清楚，把实验过程留下来。</p>
+<footer class="footer">
+  <div class="footer-inner">
+    <p>&copy; <%= date(new Date(), 'YYYY') %> <%= config.author %></p>
     <div class="footer-links">
+      <a href="<%- url_for('/digest/') %>">技术日报</a>
+      <a href="<%- url_for('/archives/') %>">归档</a>
       <a href="<%- url_for('/atom.xml') %>">RSS</a>
-      <a href="<%= theme.github_url %>" rel="noreferrer">GitHub</a>
+      <a href="<%- theme.github_url %>" rel="noreferrer">GitHub</a>
     </div>
-    <p class="copyright">&copy; <%= date(new Date(), 'YYYY') %> <%= config.author %></p>
   </div>
 </footer>

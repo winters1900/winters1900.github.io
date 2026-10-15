@@ -1,6 +1,6 @@
-<section class="listing-page shell">
+<section class="listing-page">
   <header class="listing-header">
-    <p class="eyebrow">分类</p>
+    <span class="eyebrow">分类</span>
     <h1><%= page.category %></h1>
     <% const current = (theme.categories || []).find(function(item) { return item.name === page.category; }); %>
     <% if (current) { %><p><%= current.description %></p><% } %>

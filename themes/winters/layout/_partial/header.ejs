@@ -1,26 +1,31 @@
-<header class="site-header">
-  <div class="shell header-inner">
-    <a class="site-brand" href="<%- url_for('/') %>" aria-label="返回首页">
-      <span class="brand-name"><%= config.title %></span>
-      <span class="brand-subtitle"><%= config.subtitle %></span>
+<%
+  const navItems = [
+    { label: '首页', url: '/' },
+    ...(theme.sections || []),
+    { label: '归档', url: '/archives/' },
+    { label: '关于', url: '/about/' }
+  ];
+  const currentPath = '/' + (page.path || '').replace(/index\.html$/, '');
+  const isActive = function(item) {
+    const u = item.url || '/';
+    if (u === '/') return currentPath === '/';
+    return currentPath.indexOf(u) === 0;
+  };
+%>
+<nav class="nav" id="site-nav-bar">
+  <div class="nav-inner">
+    <a href="<%- url_for('/') %>" class="nav-logo" id="navLogo" aria-label="返回首页">
+      <span class="ch ch-w">Winters</span><span class="ch ch-space">&nbsp;</span><span class="ch ch-blog">Blog</span>
     </a>
 
-    <button class="menu-toggle" type="button" data-menu-toggle aria-expanded="false" aria-controls="site-nav">
+    <button class="menu-toggle" type="button" data-menu-toggle aria-expanded="false" aria-controls="site-nav-links">
       菜单
     </button>
 
-    <nav class="site-nav" id="site-nav" data-menu aria-label="主导航">
-      <a href="<%- url_for('/') %>">首页</a>
-      <% (theme.categories || []).forEach(function(item) { %>
-        <% const category = site.categories.findOne({ name: item.name }); %>
-        <% const href = category ? url_for(category.path) : url_for(`/categories/#${item.slug}`); %>
-        <a href="<%- href %>"><%= item.name %></a>
+    <div class="nav-links" id="site-nav-links" data-menu>
+      <% navItems.forEach(function(item) { %>
+        <a href="<%- url_for(item.url) %>"<% if (isActive(item)) { %> class="active" aria-current="page"<% } %>><%= item.label || item.name %></a>
       <% }); %>
-      <a href="<%- url_for('/archives/') %>">归档</a>
-      <a href="<%- url_for('/about/') %>">关于</a>
-      <button class="theme-toggle" type="button" data-theme-toggle aria-label="切换到深色主题">
-        主题
-      </button>
-    </nav>
+    </div>
   </div>
-</header>
+</nav>

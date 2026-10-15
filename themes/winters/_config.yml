@@ -1,3 +1,9 @@
+sections:
+  - name: 技术日报
+    url: /digest/
+  - name: Why JB
+    url: /why-jb/
+
 categories:
   - name: Agent 学习笔记
     slug: agent-notes
@@ -7,9 +13,9 @@ categories:
     description: 记录持续交付、云原生、可观测性与工程效率实践。
 
 hero:
-  eyebrow: 个人技术笔记
-  title: 学懂 Agent，写下过程。
-  description: 记录理解、实验和复盘，让每次学习都有迹可循。
+  eyebrow: 个人学习档案
+  title: 学习、记录，与每日技术观察。
+  description: 每日技术日报的镜像归档，Agent 与 DevOps 的学习笔记，以及一些随笔。
   image: /images/agent-workflow-hero.webp
 
 github_url: https://github.com/winters1900

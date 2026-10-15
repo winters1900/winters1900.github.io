@@ -1,0 +1,42 @@
+<div class="ambient-background" aria-hidden="true">
+  <div class="ambient-layer ambient-layer--first" style="background-image:url('<%- url_for('/images/why-jb/jb-stage-background.jpg') %>')"></div>
+  <div class="ambient-layer ambient-layer--second" style="background-image:url('<%- url_for('/images/why-jb/jb-hood-background.jpg') %>')"></div>
+  <div class="ambient-layer ambient-layer--third" style="background-image:url('<%- url_for('/images/why-jb/jb-stage-mono-background.jpg') %>')"></div>
+</div>
+
+<article class="essay-page">
+  <header class="essay-intro">
+    <div class="essay-eyebrow">随笔 · Essay</div>
+    <h1>Why <em>JB</em><span class="period">.</span></h1>
+    <div class="essay-byline">
+      <span>文 / <%= config.author %></span>
+      <% if (page.subtitle) { %><span><%= page.subtitle %></span><% } %>
+    </div>
+  </header>
+
+  <div class="essay-body">
+    <%- page.content %>
+  </div>
+
+  <div class="endmark" aria-label="全文完">×</div>
+</article>
+
+<script>
+  (() => {
+    const layers = [...document.querySelectorAll('.ambient-layer')];
+    let scheduled = false;
+    const draw = () => {
+      const range = Math.max(1, document.documentElement.scrollHeight - innerHeight);
+      const progress = Math.min(1, Math.max(0, scrollY / range));
+      let weights;
+      if (progress <= .5) { const mix = progress * 2; weights = [1 - mix, mix, 0]; }
+      else { const mix = (progress - .5) * 2; weights = [0, 1 - mix, mix]; }
+      layers.forEach((layer, i) => { layer.style.opacity = (weights[i] * 0.2).toFixed(3); });
+      scheduled = false;
+    };
+    const update = () => { if (!scheduled) { scheduled = true; requestAnimationFrame(draw); } };
+    addEventListener('scroll', update, { passive: true });
+    addEventListener('resize', update);
+    draw();
+  })();
+</script>

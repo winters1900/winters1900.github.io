@@ -1,6 +1,6 @@
-<section class="listing-page shell">
+<section class="listing-page">
   <header class="listing-header">
-    <p class="eyebrow">内容地图</p>
+    <span class="eyebrow">内容地图</span>
     <h1>分类</h1>
     <p>先建立两个方向，文章会随着学习逐步增加。</p>
   </header>
@@ -16,7 +16,7 @@
           <p><%= item.description %></p>
         </div>
         <% if (category) { %>
-          <a class="primary-link secondary" href="<%- url_for(category.path) %>">进入分类</a>
+          <a class="btn btn-ghost" href="<%- url_for(category.path) %>">进入分类</a>
         <% } else { %>
           <p class="empty-note">分类已创建。发布第一篇文章后，这里会自动显示内容。</p>
         <% } %>

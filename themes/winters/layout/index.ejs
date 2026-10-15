@@ -1,26 +1,51 @@
+<section class="hero-art">
+  <figure class="hero-art-figure reveal">
+    <img src="<%- url_for('/images/hand-constellation.jpg') %>" width="2590" height="1619" alt="一只手托起由节点连线组成的信号星座：每日技术观察从噪声中筛出信号" fetchpriority="high" decoding="async">
+  </figure>
+</section>
+
 <section class="hero">
-  <div class="shell hero-grid">
-    <div class="hero-copy">
-      <p class="eyebrow"><%= theme.hero.eyebrow %></p>
-      <h1><%= theme.hero.title %></h1>
-      <p class="hero-description"><%= theme.hero.description %></p>
-      <a class="primary-link" href="<%- url_for('/categories/agent-notes/') %>">阅读第一篇笔记</a>
+  <div class="hero-copy">
+    <span class="hero-eyebrow"><%= theme.hero.eyebrow %></span>
+    <h1><%= theme.hero.title %></h1>
+    <p class="hero-description"><%= theme.hero.description %></p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="<%- url_for('/digest/') %>">阅读技术日报</a>
+      <a class="btn btn-ghost" href="<%- url_for('/archives/') %>">浏览全部文章</a>
     </div>
-    <figure class="hero-visual">
-      <img src="<%- url_for(theme.hero.image) %>" width="1536" height="1024" alt="Agent 工作流与部署路径的抽象图" fetchpriority="high" decoding="async">
-    </figure>
   </div>
 </section>
 
-<section class="section shell" aria-labelledby="latest-heading">
+<section class="section" aria-labelledby="feature-heading">
+  <div class="section-heading stacked">
+    <h2 id="feature-heading">内容板块</h2>
+    <p>自动生成的每日技术报告，与手写的笔记和随笔。</p>
+  </div>
+  <div class="feature-grid">
+    <a class="feature-card accent" href="<%- url_for('/digest/') %>">
+      <span class="feature-eyebrow">Daily Digest</span>
+      <h3>每日技术日报</h3>
+      <p>每日精选 arXiv 前沿、研究动态与工程实践，附核验记录、阅读边界与阅读建议。</p>
+      <span class="feature-go">进入归档 →</span>
+    </a>
+    <a class="feature-card" href="<%- url_for('/why-jb/') %>">
+      <span class="feature-eyebrow">Essay</span>
+      <h3>Why JB</h3>
+      <p>当我谈 Justin Bieber 时我们谈些什么——一篇关于音乐、记忆与年代的随笔。</p>
+      <span class="feature-go">阅读随笔 →</span>
+    </a>
+  </div>
+</section>
+
+<section class="section" aria-labelledby="latest-heading" style="padding-top:0;">
   <div class="section-heading">
     <h2 id="latest-heading">最新笔记</h2>
-    <a class="text-link" href="<%- url_for('/archives/') %>">查看归档</a>
+    <a class="text-link" href="<%- url_for('/archives/') %>">查看归档 →</a>
   </div>
   <%- partial('_partial/post-list', { posts: page.posts }) %>
 </section>
 
-<section class="section shell" aria-labelledby="category-heading">
+<section class="section" aria-labelledby="category-heading" style="padding-top:0;">
   <div class="section-heading stacked">
     <h2 id="category-heading">按主题浏览</h2>
     <p>两个分类先从最需要沉淀的方向开始。</p>
