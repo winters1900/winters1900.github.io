@@ -1,9 +1,16 @@
 ---
 title: Why JB
 subtitle: 当我谈 Justin Bieber 时我们谈些什么
+date: 2026-08-18 21:30:00
 layout: essay
 permalink: /why-jb/
 description: 当我谈 Justin Bieber 时我们谈些什么——一篇关于音乐、记忆与年代的随笔。
+categories:
+  - 随笔
+tags:
+  - 音乐
+  - 记忆
+  - 随笔
 ---
 
 记得清楚第一首是初二时某教育实践基地一同学唱的 **baby**，随即开始有一搭没一搭地听。

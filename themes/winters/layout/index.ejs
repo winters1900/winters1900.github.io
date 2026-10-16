@@ -28,11 +28,11 @@
       <p>每日精选 arXiv 前沿、研究动态与工程实践，附核验记录、阅读边界与阅读建议。</p>
       <span class="feature-go">进入归档 →</span>
     </a>
-    <a class="feature-card" href="<%- url_for('/why-jb/') %>">
-      <span class="feature-eyebrow">Essay</span>
-      <h3>Why JB</h3>
-      <p>当我谈 Justin Bieber 时我们谈些什么——一篇关于音乐、记忆与年代的随笔。</p>
-      <span class="feature-go">阅读随笔 →</span>
+    <a class="feature-card" href="<%- url_for('/archives/') %>">
+      <span class="feature-eyebrow">Notes & Essays</span>
+      <h3>学习笔记 & 随笔</h3>
+      <p>手写的 Agent 与 DevOps 笔记，以及关于音乐、记忆与年代的随笔。</p>
+      <span class="feature-go">浏览全部文章 →</span>
     </a>
   </div>
 </section>
@@ -48,7 +48,7 @@
 <section class="section" aria-labelledby="category-heading" style="padding-top:0;">
   <div class="section-heading stacked">
     <h2 id="category-heading">按主题浏览</h2>
-    <p>两个分类先从最需要沉淀的方向开始。</p>
+    <p>三个分类先从最需要沉淀的方向开始。</p>
   </div>
   <div class="category-grid">
     <% (theme.categories || []).forEach(function(item) { %>

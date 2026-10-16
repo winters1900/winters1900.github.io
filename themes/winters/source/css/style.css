@@ -861,3 +861,26 @@ button, input, textarea, select { font: inherit; color: inherit; }
     transition-duration: 0.01ms !important;
   }
 }
+
+/* ============================================================
+   跨页面平滑过渡（View Transitions，渐进增强）
+   新旧文档都需 opt-in；不支持的浏览器自动回退为普通跳转
+   ============================================================ */
+@view-transition { navigation: auto; }
+
+@keyframes page-leave {
+  from { opacity: 1; }
+  to { opacity: 0; transform: translateY(-6px); }
+}
+@keyframes page-enter {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@media (prefers-reduced-motion: no-preference) {
+  ::view-transition-old(root) { animation: page-leave 0.16s ease both; }
+  ::view-transition-new(root) { animation: page-enter 0.28s cubic-bezier(0.22, 1, 0.36, 1) both; }
+}
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(root),
+  ::view-transition-new(root) { animation: none !important; }
+}

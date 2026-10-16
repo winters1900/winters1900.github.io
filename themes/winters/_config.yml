@@ -1,8 +1,6 @@
 sections:
   - name: 技术日报
     url: /digest/
-  - name: Why JB
-    url: /why-jb/
 
 categories:
   - name: Agent 学习笔记
@@ -11,6 +9,9 @@ categories:
   - name: DevOps
     slug: devops
     description: 记录持续交付、云原生、可观测性与工程效率实践。
+  - name: 随笔
+    slug: essay
+    description: 关于音乐、记忆、年代与个人感受的随笔。
 
 hero:
   eyebrow: 个人学习档案
