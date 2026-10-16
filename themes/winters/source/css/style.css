@@ -28,6 +28,51 @@
   --font-mono: 'JetBrains Mono', 'SF Mono', ui-monospace, Menlo, Consolas, monospace;
 }
 
+/* ============================================================
+   深色模式 — Claude 深棕黑（深棕黑底 · 米白字 · 陶土橙强调）
+   跟随系统，可手动覆盖；由 <html data-theme="dark"> 触发
+   ============================================================ */
+[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #262220;
+  --bg-elevated: #2E2A27;
+  --text: #F0EDE7;
+  --text-secondary: #B7B2A9;
+  --text-tertiary: #8E8980;
+  --border: #3D3833;
+  --border-light: #34302B;
+  --accent: #E0896B;
+  --accent-hover: #EC9D82;
+  --accent-soft: #4A362D;
+  --code-bg: #332F2B;
+  /* 页脚保留真黑底 */
+  --dark: #1A1A1A;
+  --on-dark: #EDE8E0;
+  --selection: #4A362D;
+}
+
+/* 导航半透明底（深棕黑） */
+[data-theme="dark"] .nav { background: rgba(38, 34, 32, 0.85); }
+
+/* 页脚：真黑底 + 浅米字（保持原黑色背景，仅反转文字） */
+[data-theme="dark"] .footer { background: #1A1A1A; }
+[data-theme="dark"] .footer p { color: rgba(237, 232, 224, 0.72); }
+[data-theme="dark"] .footer-links a { color: rgba(237, 232, 224, 0.78); }
+[data-theme="dark"] .footer-links a:hover { color: #F0EDE7; }
+
+/* 随笔页氛围遮罩（深色） */
+[data-theme="dark"] .ambient-background::after {
+  background: radial-gradient(circle at 50% 38%, rgba(38, 34, 32, 0.1), rgba(38, 34, 32, 0.52) 78%);
+}
+
+/* 主题切换平滑过渡（仅颜色，不影响布局） */
+html[data-theme], [data-theme="dark"] body,
+[data-theme="dark"] .nav, [data-theme="dark"] .footer,
+[data-theme="dark"] .feature-card, [data-theme="dark"] .category-panel,
+[data-theme="dark"] .bg-elevated, [data-theme="dark"] .hero-art-figure {
+  transition: background-color 0.25s ease, border-color 0.25s ease, color 0.25s ease;
+}
+
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
 html {
@@ -140,6 +185,31 @@ button, input, textarea, select { font: inherit; color: inherit; }
   color: var(--text-secondary);
   cursor: pointer;
 }
+
+/* 导航右侧容器（链接 + 主题开关 + 菜单） */
+.nav-right { display: flex; align-items: center; gap: 16px; }
+
+/* 主题切换开关 */
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border: 1px solid var(--border);
+  background: var(--bg-elevated);
+  border-radius: 50%;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: color 0.18s, border-color 0.18s, background-color 0.18s, transform 0.18s;
+}
+.theme-toggle:hover { color: var(--accent); border-color: var(--accent); }
+.theme-toggle:active { transform: scale(0.92); }
+.theme-toggle svg { width: 17px; height: 17px; display: block; }
+.theme-toggle .icon-sun { display: none; }
+.theme-toggle .icon-moon { display: block; }
+[data-theme="dark"] .theme-toggle .icon-sun { display: block; }
+[data-theme="dark"] .theme-toggle .icon-moon { display: none; }
 
 /* ---------------- Hero art（首页开头正中的生成艺术） ---------------- */
 .hero-art {

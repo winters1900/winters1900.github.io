@@ -267,3 +267,33 @@ body {
   ::view-transition-old(root),
   ::view-transition-new(root) { animation: none !important; }
 }
+
+/* ============================================================
+   深色模式 — Claude 深棕黑（与主站一致；由 data-theme="dark" 触发）
+   页脚保持真黑 #1A1A1A 与浅米字。
+   ============================================================ */
+[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #262220;
+  --bg-elevated: #2E2A27;
+  --text: #F0EDE7;
+  --text-secondary: #B7B2A9;
+  --text-tertiary: #8E8980;
+  --border: #3D3833;
+  --border-light: #34302B;
+  --accent: #E0896B;
+  --accent-soft: #4A362D;
+  --code-bg: #332F2B;
+}
+[data-theme="dark"] .nav { background: rgba(38, 34, 32, 0.85); }
+[data-theme="dark"] .dropdown-menu {
+  background: var(--bg-elevated);
+  border-color: var(--border);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.5);
+}
+/* 深色页面下黑胶囊会融入背景，反转为浅米胶囊 + 深棕字 */
+[data-theme="dark"] .article h2,
+[data-theme="dark"] .section-block > h2 {
+  color: #1F1611;
+  background: #EDE8E0;
+}

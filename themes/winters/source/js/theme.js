@@ -4,6 +4,42 @@
   const menu = document.querySelector('[data-menu]');
   let logoMeasured = false;
 
+  // ---------- 主题切换（深棕黑 / 暖白）----------
+  const THEME_KEY = 'theme';
+  const LIGHT_BG = '#F9F7F4';
+  const DARK_BG = '#262220';
+  const root = document.documentElement;
+  const themeToggle = document.querySelector('[data-theme-toggle]');
+
+  function currentTheme() {
+    return root.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+  }
+  function applyTheme(theme, persist) {
+    const dark = theme === 'dark';
+    root.setAttribute('data-theme', dark ? 'dark' : 'light');
+    if (persist) {
+      try { localStorage.setItem(THEME_KEY, theme); } catch (e) {}
+    }
+    const meta = document.getElementById('meta-theme-color');
+    if (meta) meta.setAttribute('content', dark ? DARK_BG : LIGHT_BG);
+    if (themeToggle) {
+      themeToggle.setAttribute('aria-pressed', String(dark));
+      const label = dark ? '切换到浅色模式' : '切换到深色模式';
+      themeToggle.setAttribute('aria-label', label);
+      themeToggle.title = label;
+    }
+  }
+  themeToggle?.addEventListener('click', () => {
+    applyTheme(currentTheme() === 'dark' ? 'light' : 'dark', true);
+  });
+  // 系统主题变化：仅在用户未手动选择时跟随
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+    let stored = null;
+    try { stored = localStorage.getItem(THEME_KEY); } catch (err) {}
+    if (!stored || stored === 'auto') applyTheme(e.matches ? 'dark' : 'light', false);
+  });
+  applyTheme(currentTheme(), false);
+
   // Logo 收缩：滚动后隐藏后半段，首次滚动时才测量宽度（等字体就绪）
   function measureLogo() {
     if (logoMeasured) return;
