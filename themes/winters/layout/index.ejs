@@ -26,7 +26,7 @@
       <span class="feature-eyebrow">Daily Digest</span>
       <h3>每日技术日报</h3>
       <p>每日精选 arXiv 前沿、研究动态与工程实践，附核验记录、阅读边界与阅读建议。</p>
-      <span class="feature-go">进入归档 →</span>
+      <span class="feature-go">浏览全部日报 →</span>
     </a>
     <a class="feature-card" href="<%- url_for('/archives/') %>">
       <span class="feature-eyebrow">Notes & Essays</span>
@@ -40,7 +40,7 @@
 <section class="section" aria-labelledby="latest-heading" style="padding-top:0;">
   <div class="section-heading">
     <h2 id="latest-heading">最新笔记</h2>
-    <a class="text-link" href="<%- url_for('/archives/') %>">查看归档 →</a>
+    <a class="text-link" href="<%- url_for('/archives/') %>">查看文章 →</a>
   </div>
   <%- partial('_partial/post-list', { posts: page.posts }) %>
 </section>

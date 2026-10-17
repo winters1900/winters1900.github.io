@@ -1,12 +1,12 @@
 <section class="listing-page">
   <header class="listing-header">
-    <span class="eyebrow">全部记录</span>
-    <h1>归档</h1>
-    <p>按时间回看学习路径和实践记录。</p>
+    <span class="eyebrow">全部文章</span>
+    <h1>文章</h1>
+    <p>手写的学习笔记与随笔，按时间排列。</p>
   </header>
   <%- partial('_partial/post-list', { posts: page.posts }) %>
   <% if (page.total > 1) { %>
-    <nav class="pagination" aria-label="归档分页">
+    <nav class="pagination" aria-label="文章分页">
       <%- paginator({ prev_text: '上一页', next_text: '下一页' }) %>
     </nav>
   <% } %>
