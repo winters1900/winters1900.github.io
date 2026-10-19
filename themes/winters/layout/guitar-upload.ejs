@@ -1,0 +1,157 @@
+<%
+  const owner = (theme.guitar && theme.guitar.owner) || 'winters1900';
+  const sheetRepo = (theme.guitar && theme.guitar.sheet_repo) || 'guitar_sheet';
+  const blogRepo = (theme.guitar && theme.guitar.blog_repo) || 'winters1900.github.io';
+  const tokenUrl = 'https://github.com/settings/personal-access-tokens/new';
+%>
+<section class="guitar-page guitar-upload-page">
+  <header class="guitar-hero">
+    <span class="hero-eyebrow">Guitar Sheets · Upload</span>
+    <h1>上传吉他谱</h1>
+    <p class="guitar-hero-sub">选择 PDF、填写信息后提交，谱子会直接提交到 GitHub 谱库仓库，并自动触发博客重新发布。</p>
+    <div class="guitar-hero-actions">
+      <a class="btn btn-ghost" href="<%- url_for('/guitar/') %>">← 返回吉他谱</a>
+    </div>
+  </header>
+
+  <div class="upload-shell">
+    <!-- 授权 -->
+    <section class="panel" id="token-panel">
+      <div class="panel-head">
+        <h2>① 授权连接</h2>
+        <span class="conn-status" id="conn-status" data-state="idle">
+          <span class="dot"></span><span class="text">尚未连接</span>
+        </span>
+      </div>
+
+      <div id="token-form">
+        <p class="panel-desc">粘贴一个 GitHub fine-grained personal access token。Token 仅保存在你当前浏览器的 localStorage 中，不会写进博客、不会随站点发布。</p>
+        <div class="token-row">
+          <input type="password" id="gh-token" autocomplete="off" placeholder="github_pat_xxxxxxxxxxxxxxxxxxxx" spellcheck="false">
+          <button type="button" class="btn btn-primary" id="token-save">保存并验证</button>
+        </div>
+        <details class="token-help">
+          <summary>如何创建只允许这两个仓库的 Token？</summary>
+          <ol>
+            <li>打开 <a href="<%- tokenUrl %>" target="_blank" rel="noopener noreferrer">GitHub 新建 fine-grained token</a>。</li>
+            <li><strong>Repository access</strong> 选 <em>Only select repositories</em>，勾选 <code><%= owner %>/<%= sheetRepo %></code> 和 <code><%= owner %>/<%= blogRepo %></code>。</li>
+            <li><code><%= sheetRepo %></code> 的 <strong>Permissions → Repository permissions → Contents</strong> 设为 <strong>Read and write</strong>。</li>
+            <li><code><%= blogRepo %></code> 的 <strong>Permissions → Actions</strong> 设为 <strong>Read and write</strong>（用于提交后触发博客发布）。</li>
+            <li>生成后复制 <code>github_pat_...</code> 粘到上面。用完可随时在 GitHub 撤销该 Token。</li>
+          </ol>
+        </details>
+      </div>
+
+      <div id="token-ok" hidden>
+        <p class="panel-desc">已以 <strong id="gh-user">…</strong> 身份连接。PDF 将提交到 <code><%= owner %>/<%= sheetRepo %></code>，并触发 <code><%= blogRepo %></code> 发布。</p>
+        <div class="token-row">
+          <button type="button" class="btn btn-ghost" id="token-replace">更换 Token</button>
+          <button type="button" class="btn btn-ghost btn-danger" id="token-remove">移除 Token</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 上传表单 -->
+    <section class="panel" id="upload-panel">
+      <div class="panel-head"><h2>② 选择 PDF 并填写信息</h2></div>
+
+      <form id="upload-form" class="upload-form">
+        <label class="dropzone" id="dropzone" for="pdf-file">
+          <input type="file" id="pdf-file" accept="application/pdf,.pdf" hidden>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+          <span class="dropzone-text" id="dropzone-text">点击选择，或把 PDF 拖到这里</span>
+          <span class="dropzone-hint" id="dropzone-hint">支持 PDF，单文件最大 100 MB</span>
+        </label>
+
+        <div class="form-grid">
+          <div class="field">
+            <label for="f-title">曲目标题 <em>*</em></label>
+            <input type="text" id="f-title" required placeholder="例如：White Album">
+          </div>
+          <div class="field">
+            <label for="f-work">出处</label>
+            <input type="text" id="f-work" placeholder="专辑 / 动画 / 游戏 / 原创署名">
+          </div>
+          <div class="field">
+            <label for="f-tabber">制谱 / 打谱</label>
+            <input type="text" id="f-tabber" placeholder="例如：闻雨">
+          </div>
+          <div class="field">
+            <label for="f-type">谱类型</label>
+            <select id="f-type">
+              <option value="fingerstyle">指弹独奏</option>
+              <option value="chord">和弦弹唱 / 指法</option>
+              <option value="score">五线谱 · 六线谱</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="f-tuning">调弦</label>
+            <input type="text" id="f-tuning" list="tuning-list" placeholder="标准调弦" value="标准调弦">
+            <datalist id="tuning-list">
+              <option value="标准调弦"></option>
+              <option value="Dropped D"></option>
+              <option value="Open G6 特殊调弦"></option>
+              <option value="Open D"></option>
+              <option value="Open G"></option>
+            </datalist>
+          </div>
+          <div class="field">
+            <label for="f-capo">变调夹</label>
+            <select id="f-capo">
+              <option value="">无</option>
+              <option value="Capo 1">Capo 1</option>
+              <option value="Capo 2">Capo 2</option>
+              <option value="Capo 3">Capo 3</option>
+              <option value="Capo 4">Capo 4</option>
+              <option value="Capo 5">Capo 5</option>
+              <option value="Capo 6">Capo 6</option>
+              <option value="Capo 7">Capo 7</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="f-tempo">速度</label>
+            <input type="text" id="f-tempo" placeholder="♩ = 76">
+          </div>
+          <div class="field">
+            <label for="f-pages">页数</label>
+            <input type="number" id="f-pages" min="1" step="1" placeholder="选择 PDF 后自动识别">
+          </div>
+          <div class="field field-wide">
+            <label for="f-tags">标签</label>
+            <input type="text" id="f-tags" placeholder="多个标签用逗号分隔，例如：指弹, WHITE ALBUM 2">
+          </div>
+          <div class="field field-wide">
+            <label for="f-note">备注</label>
+            <textarea id="f-note" rows="2" placeholder="调弦、练习提示等（可留空）"></textarea>
+          </div>
+        </div>
+
+        <label class="checkbox">
+          <input type="checkbox" id="f-publish" checked>
+          <span>提交成功后自动触发博客重新发布（约 1–2 分钟上线）</span>
+        </label>
+
+        <div class="form-actions">
+          <button type="submit" class="btn btn-primary" id="submit-btn">提交吉他谱</button>
+        </div>
+      </form>
+
+      <ol class="steps" id="steps" hidden>
+        <li data-step="pdf"><span class="step-state"></span><span class="step-label">上传 PDF</span></li>
+        <li data-step="manifest"><span class="step-state"></span><span class="step-label">更新清单 sheets.json</span></li>
+        <li data-step="publish"><span class="step-state"></span><span class="step-label">触发博客发布</span></li>
+      </ol>
+
+      <div class="result" id="result" hidden></div>
+    </section>
+  </div>
+</section>
+
+<script src="<%- url_for('/js/vendor/pdf.min.js') %>" defer></script>
+<script src="<%- url_for('/js/guitar-upload.js') %>"
+  data-owner="<%= owner %>"
+  data-sheet-repo="<%= sheetRepo %>"
+  data-blog-repo="<%= blogRepo %>"
+  data-branch="main"
+  data-workflow="pages.yml"
+  defer></script>

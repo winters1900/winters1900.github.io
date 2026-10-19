@@ -2,6 +2,7 @@
   <div class="footer-inner">
     <p>&copy; <%= date(new Date(), 'YYYY') %> <%= config.author %></p>
     <div class="footer-links">
+      <a href="<%- url_for('/guitar/') %>">吉他谱</a>
       <a href="<%- url_for('/digest/') %>">技术日报</a>
       <a href="<%- url_for('/archives/') %>">文章</a>
       <a href="<%- url_for('/atom.xml') %>">RSS</a>

@@ -38,6 +38,15 @@ categories:
 
 一篇文章只需要选择一个主分类。`tags` 可以填写更具体的主题，例如 `Tool Use`、`Kubernetes` 或 `GitHub Actions`。
 
+## 吉他谱专栏
+
+站点的「吉他谱」专栏在 `/guitar/`，内容来自独立仓库 [guitar_sheet](https://github.com/winters1900/guitar_sheet)（PDF + `sheets.json` 清单）。
+
+- 在线新增：打开 `/guitar/upload/`，粘贴一个仅授权谱库 Contents 读写、博客 Actions 读写的 GitHub fine-grained token（只保存在浏览器 localStorage），选择 PDF 并填写信息后提交即可，提交后会自动触发博客重新发布。
+- 构建同步：GitHub Actions 构建时会先克隆 `guitar_sheet`，再执行 `node scripts/sync-guitar.mjs .guitar-src`，把 PDF 同步到 `source/guitar/sheets/`、把清单写入 `source/_data/guitar_sheets.json`。
+- 本地手动同步：先克隆 `guitar_sheet` 到相邻目录，再执行 `npm run sync:guitar -- ../guitar_sheet`。
+- 专栏用本地托管的 PDF.js 懒加载每份谱的首页作为缩略图（`themes/winters/source/js/vendor/`），无第三方 CDN 依赖。
+
 ## 构建
 
 ```bash

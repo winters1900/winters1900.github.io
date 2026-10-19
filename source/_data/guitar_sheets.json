@@ -1,0 +1,150 @@
+{
+  "updated": "2026-10-19",
+  "generatedAt": "2026-10-19T06:03:05.738Z",
+  "count": 7,
+  "sheets": [
+    {
+      "id": "silent-winter-night",
+      "title": "Silent Winter Night",
+      "work": "animelodies1",
+      "tabber": "animelodies1",
+      "type": "score",
+      "tuning": "Open G6 特殊调弦",
+      "capo": "",
+      "tempo": "♩ = 87",
+      "pages": 2,
+      "difficulty": "",
+      "tags": [
+        "原创",
+        "五线谱",
+        "Open G6"
+      ],
+      "file": "Silent Winter Night.pdf",
+      "url": "/guitar/sheets/Silent%20Winter%20Night.pdf",
+      "note": "开放 G6 特殊调弦；五线谱与六线谱对照。",
+      "createdAt": ""
+    },
+    {
+      "id": "jiji-dong-ye",
+      "title": "寂寂冬夜",
+      "work": "Silent Winter Night",
+      "tabber": "animelodies1",
+      "type": "fingerstyle",
+      "tuning": "Open G6 特殊调弦",
+      "capo": "",
+      "tempo": "",
+      "pages": 1,
+      "difficulty": "",
+      "tags": [
+        "原创",
+        "整页总览"
+      ],
+      "file": "寂寂冬夜.pdf",
+      "url": "/guitar/sheets/%E5%AF%82%E5%AF%82%E5%86%AC%E5%A4%9C.pdf",
+      "note": "《Silent Winter Night》的整页总览版，一图看全曲。",
+      "createdAt": ""
+    },
+    {
+      "id": "white-album",
+      "title": "WHITE ALBUM",
+      "work": "《WHITE ALBUM》同名曲",
+      "tabber": "",
+      "type": "fingerstyle",
+      "tuning": "标准调弦",
+      "capo": "Capo 1",
+      "tempo": "♩ = 76",
+      "pages": 2,
+      "difficulty": "",
+      "tags": [
+        "指弹",
+        "WHITE ALBUM"
+      ],
+      "file": "White Album.pdf",
+      "url": "/guitar/sheets/White%20Album.pdf",
+      "note": "变调夹第一品，全程让音延续。",
+      "createdAt": ""
+    },
+    {
+      "id": "honesty",
+      "title": "Honesty",
+      "work": "《WHITE ALBUM 2》",
+      "tabber": "闻雨",
+      "type": "fingerstyle",
+      "tuning": "标准调弦",
+      "capo": "Capo 2",
+      "tempo": "♩ = 70",
+      "pages": 2,
+      "difficulty": "",
+      "tags": [
+        "指弹",
+        "WHITE ALBUM 2"
+      ],
+      "file": "Honesty.pdf",
+      "url": "/guitar/sheets/Honesty.pdf",
+      "note": "变调夹第二品，全程让音延续。",
+      "createdAt": ""
+    },
+    {
+      "id": "kirei-fingerstyle",
+      "title": "綺麗で儚いもの",
+      "work": "《WHITE ALBUM 2》",
+      "tabber": "闻雨kun",
+      "type": "fingerstyle",
+      "tuning": "Dropped D",
+      "capo": "Capo 4",
+      "tempo": "♩ = 73",
+      "pages": 2,
+      "difficulty": "",
+      "tags": [
+        "指弹",
+        "WHITE ALBUM 2",
+        "Dropped D"
+      ],
+      "file": "綺麗で儚いもの.pdf",
+      "url": "/guitar/sheets/%E7%B6%BA%E9%BA%97%E3%81%A7%E5%84%9A%E3%81%84%E3%82%82%E3%81%AE.pdf",
+      "note": "Dropped D 调弦，变调夹第四品。",
+      "createdAt": ""
+    },
+    {
+      "id": "kirei-chord",
+      "title": "綺麗で儚いもの（和弦指法）",
+      "work": "《WHITE ALBUM 2》",
+      "tabber": "闻雨kun",
+      "type": "chord",
+      "tuning": "Dropped D",
+      "capo": "Capo 4",
+      "tempo": "♩ = 73",
+      "pages": 3,
+      "difficulty": "",
+      "tags": [
+        "和弦指法",
+        "WHITE ALBUM 2",
+        "Dropped D"
+      ],
+      "file": "綺麗で儚いもの和弦指法.pdf",
+      "url": "/guitar/sheets/%E7%B6%BA%E9%BA%97%E3%81%A7%E5%84%9A%E3%81%84%E3%82%82%E3%81%AE%E5%92%8C%E5%BC%A6%E6%8C%87%E6%B3%95.pdf",
+      "note": "含和弦指法图、五线谱与六线谱，适合弹唱与对照练习。",
+      "createdAt": ""
+    },
+    {
+      "id": "kotoba",
+      "title": "言葉にできない想い",
+      "work": "《WHITE ALBUM 2》",
+      "tabber": "闻雨",
+      "type": "fingerstyle",
+      "tuning": "标准调弦",
+      "capo": "",
+      "tempo": "♩ = 90",
+      "pages": 2,
+      "difficulty": "",
+      "tags": [
+        "指弹",
+        "WHITE ALBUM 2"
+      ],
+      "file": "言葉にできない想い.pdf",
+      "url": "/guitar/sheets/%E8%A8%80%E8%91%89%E3%81%AB%E3%81%A7%E3%81%8D%E3%81%AA%E3%81%84%E6%83%B3%E3%81%84.pdf",
+      "note": "标准调弦，全程让音延续。",
+      "createdAt": ""
+    }
+  ]
+}

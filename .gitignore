@@ -6,3 +6,4 @@ db.json
 npm-debug.log*
 .workbuddy/
 .creative-design/
+.guitar-src/

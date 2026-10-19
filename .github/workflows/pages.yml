@@ -20,6 +20,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v6
 
+      - name: Checkout guitar_sheet
+        run: git clone --depth 1 https://github.com/winters1900/guitar_sheet.git .guitar-src
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
@@ -28,6 +31,9 @@ jobs:
 
       - name: Install dependencies
         run: npm ci
+
+      - name: Sync guitar sheets
+        run: node scripts/sync-guitar.mjs .guitar-src
 
       - name: Build site
         run: npm run build

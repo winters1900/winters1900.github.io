@@ -1,6 +1,14 @@
 sections:
+  - name: 吉他谱
+    url: /guitar/
   - name: 技术日报
     url: /digest/
+
+guitar:
+  owner: winters1900
+  sheet_repo: guitar_sheet
+  blog_repo: winters1900.github.io
+  repo_url: https://github.com/winters1900/guitar_sheet
 
 categories:
   - name: Agent 学习笔记
